@@ -249,12 +249,14 @@ class ES(object):
             raise Exception(ex.json['extra']['data'])
         cls._mappings_setup = True
 
+    #RHS: FATMAP 19.01.2017 removed for purposes of defining mapping by hand
     def put_mapping(self, body, **kwargs):
-        self.api.indices.put_mapping(
-            doc_type=self.doc_type,
-            body=body,
-            index=self.index_name,
-            **kwargs)
+        print "FATMAP: no mapping set in elasticsearch, run mapping"
+        # self.api.indices.put_mapping(
+        #     doc_type=self.doc_type,
+        #     body=body,
+        #     index=self.index_name,
+        #     **kwargs)
 
     def process_chunks(self, documents, operation):
         """ Apply `operation` to chunks of `documents` of size
